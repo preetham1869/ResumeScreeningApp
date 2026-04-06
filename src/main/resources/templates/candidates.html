@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Candidates</title>
+</head>
+<body>
+
+    <h1>All Uploaded Candidates</h1>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>File Name</th>
+            <th>Extracted Skills</th>
+            <th>Recommended Job</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+
+        <tr th:each="candidate : ${candidates}">
+            <td th:text="${candidate.id}"></td>
+            <td th:text="${candidate.name}"></td>
+            <td th:text="${candidate.email}"></td>
+            <td th:text="${candidate.phone}"></td>
+            <td th:text="${candidate.fileName}"></td>
+            <td th:text="${candidate.extractedSkills}"></td>
+            <td th:text="${candidate.recommendedJob}"></td>
+            <td th:text="${candidate.status}"></td>
+            <td>
+                <a th:href="@{/select/{id}(id=${candidate.id})}">Select</a>
+                |
+                <a th:href="@{/reject/{id}(id=${candidate.id})}">Reject</a>
+            </td>
+        </tr>
+    </table>
+
+    <br><br>
+    <a href="/">Go Back</a>
+
+</body>
+</html>

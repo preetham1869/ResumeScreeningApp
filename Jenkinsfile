@@ -2,7 +2,6 @@ pipeline {
     agent any
 
     stages {
-
         stage('Build Project') {
             steps {
                 bat 'mvnw.cmd clean package -DskipTests'
@@ -17,7 +16,8 @@ pipeline {
 
         stage('Run Container') {
             steps {
-                bat 'docker run -d -p 8086:8080 resumescreeningapp'
+                bat 'docker rm -f resumescreeningapp-container || exit 0'
+                bat 'docker run -d --name resumescreeningapp-container -p 8086:8080 resumescreeningapp'
             }
         }
     }

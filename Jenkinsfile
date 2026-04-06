@@ -1,11 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'Maven'
-        jdk 'Java17'
-    }
-
     stages {
 
         stage('Clone Code') {
@@ -16,7 +11,7 @@ pipeline {
 
         stage('Build Project') {
             steps {
-                bat 'mvn clean package -DskipTests'
+                bat 'mvnw.cmd clean package -DskipTests'
             }
         }
 

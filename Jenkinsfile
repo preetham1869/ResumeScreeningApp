@@ -17,7 +17,7 @@ pipeline {
         stage('Run Container') {
             steps {
                 bat 'docker rm -f resumescreeningapp-container || exit 0'
-                bat 'docker run -d --name resumescreeningapp-container -p 8086:8080 resumescreeningapp'
+                bat 'docker run -d --name resumescreeningapp-container -p 8087:8080 resumescreeningapp'
             }
         }
     }
